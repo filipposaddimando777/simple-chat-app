@@ -1,0 +1,23 @@
+body {
+  background-color: darkgrey;
+  font-family: Georgia;
+}
+
+h1, h3 {
+  color: blue;
+}
+
+#chatarea {
+  background-color: black;
+  width: 350px;
+  height: 300px;
+  color: yellow;
+}
+
+#chatmsg {
+  width: 300px;
+}
+
+#sendbtn {
+  background-color: beige;
+}

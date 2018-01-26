@@ -1,0 +1,10 @@
+{
+  "name": "project1",
+  "version": "1.0.0",
+  "description": "This is a simple chat app using socket.io and html5 and express server",
+  "main": "index.js",
+  "dependencies": {
+    "socket.io": "latest",
+    "express": "latest"
+  }
+}

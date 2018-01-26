@@ -1,0 +1,37 @@
+<html>
+<head>
+  <title>Simple Chat App using HTML5, NodeJS and Socket.IO</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+</head>
+<body>
+  <h1>Simple Chat App using HTML5, NodeJS and Socket.IO</h1>
+  <h3>Messages will appear below</h3>
+  <div id="chatarea"></div></br>
+  <form id="chatform">
+    <input type="text" id="chatmsg"></input>
+    <input type="submit" id="sendbtn" value="Send"></input>
+  </form>
+  <audio id="pop"><source src="assets/sounds/pop.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio>
+<script>
+  $(function(){
+    // Connect to socket handle
+    var socket = io.connect();
+    var chatform = $('#chatform');
+    var chatmsg = $('#chatmsg');
+    // emit message on form submit
+    chatform.submit((event) => {
+      event.preventDefault();
+      socket.emit('clientmsg', chatmsg.val());
+    });
+    //Attach listener to handle server replies.
+    socket.on('servermsg', (data) => {
+      $('#chatarea').append('</br>');
+      $('#chatarea').append(data.msg);
+      $('#pop')[0].play();
+    });
+  });
+</script>
+</body>
+</html>
